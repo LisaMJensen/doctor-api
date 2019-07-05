@@ -11,7 +11,7 @@ _This web application utilizes the BetterDoctor API to search by doctors name fo
 ## Setup/Installation Requirements
 
 * _Clone the following github repository to view the code and open the html file in a web browser:  ._
-* _You will need to have Node.js installed on your computer. Run npm install, then run npm build, followed by npm install in your terminal._
+* _You will need to have Node.js and Node Package Manager (NPM) installed on your computer. Once inside the cloned reporitory,run npm install, then run npm build, followed by npm install in your terminal._
 * _You can make an account at BetterDoctor's website to get your own API key._
 
 ## Known Bugs
