@@ -11,6 +11,10 @@ $(document).ready(function() {
       let name = $('#enteredName').val();
       $('#enteredName').val("");
 
+      // let query = $('#enteredQuery').val();
+      // $('#enteredQuery').val("");
+
+
         let doctorSearch = new DoctorService();
 
         let promise = doctorSearch.getDoctorByName(name);
@@ -19,10 +23,10 @@ $(document).ready(function() {
         let doctorProfile = JSON.parse(response);
         console.log(name);
         console.log(doctorSearch);
-        console.log(doctorProfile);
+        console.log(doctorProfile.data.length);
 
         if (doctorProfile.data.length > 0) {
-        $('.showDoctor').empty();
+        $('.showDoctors').empty();
 
           for(let i=0; i<doctorProfile.data.length; i++) {
             $('.showDoctors').append(
@@ -32,9 +36,9 @@ $(document).ready(function() {
               <tr>
               <td>
               <ul>
-              <li>${doctorProfile.data[i].practices[0].name}</li>
-              <li>${doctorProfile.data[i].practices[0].visit_address.street}<br>${doctorProfile.data[i].practices[0].visit_address.city}, ${doctorProfile.data[i].practices[0].visit_address.state} ${doctorProfile.data[i].practices[0].visit_address.zip}</li>
-              <li>${doctorProfile.data[i].practices[0].phones[0].number}</li>
+              <li>Name of Practice: ${doctorProfile.data[i].practices[0].name}</li>
+              <li>Address: ${doctorProfile.data[i].practices[0].visit_address.street}<br>${doctorProfile.data[i].practices[0].visit_address.city}, ${doctorProfile.data[i].practices[0].visit_address.state} ${doctorProfile.data[i].practices[0].visit_address.zip}</li>
+              <li>Phone Number: ${doctorProfile.data[i].practices[0].phones[0].number}</li>
               <li><a href="${doctorProfile.data[i].practices[0].website}">Website</a></li>
               <li>${doctorProfile.data[i].practices[0].accepts_new_patients}</li></ul><br>
               </td>
@@ -45,7 +49,7 @@ $(document).ready(function() {
               </div><br>`);
 
           }
-        } else { ('.showDoctors').text('No doctors were found in your area that match your search.');
+        } else { $('.showDoctors').text('No doctors were found in your area that match your search.');
       }
         })
 
